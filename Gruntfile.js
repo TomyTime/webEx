@@ -5,10 +5,15 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     watch: {
-
+        css: {
+            files: [
+                'public/stylesheets/style.css'
+            ],
+            tasks: ['cssmin:minify']
+        }
     },
 
-    browser_sync: {
+      browserSync: {
       files: {
         src : [
           'public/stylesheets/*.css',
@@ -37,10 +42,11 @@ module.exports = function(grunt) {
     }
   });
 
-  // 加载Grunt插件
+    // 加载Grunt插件
   grunt.loadNpmTasks('grunt-browser-sync');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   // 注册grunt默认任务
-  grunt.registerTask('default', ["browser_sync"]);
+  grunt.registerTask('default', ["browserSync", "watch"]);
 };

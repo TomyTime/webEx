@@ -1,8 +1,13 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  font: 14px "Lucida Grande", "Helvetica", "Arial", "sans-serif";
+  background-color: #f2f2f2;
 }
-
+p{
+    line-height: 1.8;
+}
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
