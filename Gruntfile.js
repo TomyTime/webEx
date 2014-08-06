@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     watch: {
         css: {
             files: [
-                'public/stylesheets/style.css'
+                'public/stylesheets/*.css'
             ],
             tasks: ['cssmin:minify']
         }
