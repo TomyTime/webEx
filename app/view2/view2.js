@@ -10,7 +10,8 @@ angular.module('myApp.view2', ['ngRoute', 'highcharts-ng'])
     }])
 
 
-    .controller('View2Ctrl', function ($scope, $http, MyCache) {
+    .controller('View2Ctrl', function ($scope, $http, MyCache, ngProgressLite) {
+        ngProgressLite.start();
         var chartConfig = MyCache.get('history');
         if(!chartConfig) {
             $http({
@@ -82,8 +83,11 @@ angular.module('myApp.view2', ['ngRoute', 'highcharts-ng'])
             }).error(function (data, status, headers, config) {
                 //$scope.status = status;
                 console.log('err');
+            }).finally(function(){
+                ngProgressLite.done();
             });
         }else{
             $scope.chartConfig1 = chartConfig;
+            ngProgressLite.done();
         }
     });

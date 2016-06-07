@@ -9,7 +9,8 @@ angular.module('myApp.view1', ['ngRoute', 'highcharts-ng'])
         });
     }])
 
-    .controller('View1Ctrl', function ($scope, $http) {
+    .controller('View1Ctrl', function ($scope, $http, ngProgressLite) {
+        ngProgressLite.start();
         $http({
             url: "http://127.0.0.1:3000",
             method: "GET",
@@ -67,6 +68,8 @@ angular.module('myApp.view1', ['ngRoute', 'highcharts-ng'])
         }).error(function (data, status, headers, config) {
             //$scope.status = status;
             console.log('err');
+        }).finally(function(){
+            ngProgressLite.done();
         });
 
     });
