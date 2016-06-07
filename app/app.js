@@ -12,5 +12,8 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   $routeProvider.otherwise({redirectTo: '/view1'});
 }])
 .factory('MyCache', function ($cacheFactory) {
-  return $cacheFactory('myCache');
+  return $cacheFactory('myCache', {
+    maxAge: 60 * 60 * 1000,
+    deleteOnExpire: 'aggressive'
+  });
 });
