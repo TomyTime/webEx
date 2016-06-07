@@ -4,8 +4,10 @@ var http = require("http"),
     async = require("async"),
     cheerio = require("cheerio"),
     dateFormat = require('dateformat'),
-    fs = require("fs");
-
+    fs = require("fs"),
+    tz = require("timezone/Asia");
+    
+process.env.TZ = 'Asia/Chongqing'; //保证时区正确
 var startDate = new Date(), //开始时间
     endDate = new Date(startDate.getTime() - 1000 * 60 * 60 * 24), //结束时间
     catchFirstUrl = 'http://srh.bankofchina.com/search/whpj/search.jsp?nothing=' + dateFormat(endDate, 'yyyy-mm-dd') + '&erectDate=' + dateFormat(endDate, 'yyyy-mm-dd') + '&pjname=1330', //入口页面
