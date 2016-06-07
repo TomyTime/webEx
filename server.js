@@ -48,10 +48,8 @@ function start() {
                         console.log("pageUrls.length = ", pageUrls.length);
                         var curCount = 0;
                         var reptileMove = function(url, callback) {
-                            //延迟毫秒数
-                            // var delay = parseInt((Math.random() * 30000000) % 1000, 10);
                             curCount++;
-                            console.log('现在的并发数是', curCount, '，正在抓取的是', url, '，耗时' + delay + '毫秒');
+                            console.log('并发数: ', curCount, ',   url: ', url);
 
                             superagent.get(url)
                                 .end(function(err, pres) {
@@ -71,10 +69,6 @@ function start() {
                                         }
                                     });
                                 });
-                            /*setTimeout(function() {
-                                curCount--;
-                                callback(null, url + 'Call back content');
-                            }, delay);*/
                         };
 
                         // 使用async控制异步抓取
