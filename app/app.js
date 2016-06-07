@@ -10,4 +10,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   $locationProvider.hashPrefix('!');
 
   $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+}])
+.factory('MyCache', function ($cacheFactory) {
+  return $cacheFactory('myCache');
+});
