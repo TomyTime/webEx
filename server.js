@@ -101,7 +101,7 @@ function start() {
 start();
 
 function file2sql() {
-    var _data = [];
+    var _data = ["delete from hit where dd like '" + (dateFormat(endDate, 'yyyy-mm-dd%')) + "';"];
     fs.readFile('data.txt', 'utf-8', function(err, data) {
         if (err) {
             console.error(err);
