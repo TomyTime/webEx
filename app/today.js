@@ -12,7 +12,7 @@ var server = http.createServer(function onRequest(req, res) {
 });
 
 var startDate = new Date(), //开始时间
-    endDate = new Date(startDate.getTime()), //结束时间
+    endDate = new Date(startDate.getTime()), //结束时间 
     catchFirstUrl = 'http://srh.bankofchina.com/search/whpj/search.jsp?nothing=' + dateFormat(endDate, 'yyyy-mm-dd') + '&erectDate=' + dateFormat(startDate, 'yyyy-mm-dd') + '&pjname=1330', //入口页面
     catchData = [], //存放爬取数据
     pageUrls = []; //存放收集文章页面网站
@@ -42,7 +42,7 @@ router.get('/', function(req, res) {
                     var dd = $(tr).find('td').eq(7).text();
                     if (dd) {
                         catchData.push(
-                            '{ "time": "' + dd.replace(/(\d{4})\.(\d{2})\./g, '$1-$2-') + '", "value": ' + $(tr).find('td').eq(1).text() + '}'
+                            '{ "time": "' + dd.replace(/(\d{4})\.(\d{2})\./g, '$1/$2/') + '", "value": ' + $(tr).find('td').eq(1).text() + '}'
                         );
                     }
                 });
