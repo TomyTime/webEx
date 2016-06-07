@@ -28,8 +28,28 @@ angular.module('myApp.view2', ['ngRoute', 'highcharts-ng'])
                         zoomType: 'x',
                         type: 'spline'
                     },
-                    rangeSelector: {
-                        enabled: true
+                    rangeSelector : {
+                        buttons: [{
+                            type: 'day',
+                            count: 1,
+                            text: '1d'
+                        }, {
+                            type: 'week',
+                            count: 1,
+                            text: '1w'
+                        }, {
+                            type: 'month',
+                            count: 1,
+                            text: '1m'
+                        }, {
+                            type: 'year',
+                            count: 1,
+                            text: '1y'
+                        }, {
+                            type: 'all',
+                            text: 'All'
+                        }],
+                        selected : 1 // month
                     },
                     navigator: {
                         enabled: true
@@ -41,9 +61,18 @@ angular.module('myApp.view2', ['ngRoute', 'highcharts-ng'])
                 },
                 series: [{
                     name: '人民币',
-                    data: yA
+                    data: yA,
+                    tooltip: {
+                        valueDecimals: 2
+                    }/*,
+                    dataGrouping: {
+                        enabled: false
+                    }*/
                 }],
-                loading: false,
+                /*loading: false,*/
+                /*xAxis : {
+                    minRange: 3600 * 1000 * 24 * 7 // one hour
+                },*/
                 yAxis: {
                     title: {
                         text: '100纽币可换人民币'

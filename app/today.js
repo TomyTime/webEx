@@ -8,11 +8,11 @@ var http = require("http"),
 
 var router = Router();
 var server = http.createServer(function onRequest(req, res) {
-    router(req, res, {});
+    router(req, res, finalhandler);
 });
 
 var startDate = new Date(), //开始时间
-    endDate = new Date(startDate.getTime()), //结束时间 
+    endDate = new Date(startDate.getTime()), //结束时间
     catchFirstUrl = 'http://srh.bankofchina.com/search/whpj/search.jsp?nothing=' + dateFormat(endDate, 'yyyy-mm-dd') + '&erectDate=' + dateFormat(startDate, 'yyyy-mm-dd') + '&pjname=1330', //入口页面
     catchData = [], //存放爬取数据
     pageUrls = []; //存放收集文章页面网站
@@ -49,7 +49,7 @@ router.get('/', function(req, res) {
                 res.end('[' + catchData.join() + ']');
             });
     })
-    .get('/history/', function(req, res) {
+    .get('/history', function(req, res) {
         res.writeHead(200, {
             'Content-Type': 'text/plain',
             'Access-Control-Allow-Origin': '*'
@@ -60,7 +60,7 @@ router.get('/', function(req, res) {
             return;
         }
         var _data = [];
-        db.exec('SELECT * from hit', [], function(err, rows) {
+        db.exec('select * from hit t order by t.dd desc', [], function(err, rows) {
             if (!err) {
                 for (var i = 0, len = rows.length; i < len; i++) {
                     _data.push('{"time":"' + rows[i].dd + '", "value": ' + rows[i].vv + '}');
