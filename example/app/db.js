@@ -3,9 +3,9 @@
  var pool = mysql.createPool({
    connectionLimit: 100, //important
    host: '127.0.0.1',
-   user: 'yjd',
-   password: 'YouJingDi4dashen!',
-   database: 'mia_desktop',
+   user: 'xx',
+   password: 'xx!',
+   database: 'xx',
    debug: false
  })
 
@@ -13,9 +13,9 @@
 
  /*var connection = mysql.createConnection({
    host: '192.168.99.100',
-   user: 'yjd',
-   password: 'youjingdi',
-   database: 'mia_desktop'
+   user: 'xx',
+   password: 'xx',
+   database: 'xx'
  });
 
  connection.connect();
