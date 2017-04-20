@@ -1,0 +1,16 @@
+{
+  "name": "trie",
+  "version": "1.0.0",
+  "description": "Trie Tree",
+  "main": "app.js",
+  "author": "admin@TomyTime.com",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2",
+    "fetch": "^1.1.0",
+    "mysql": "^2.13.0",
+    "body-parser": "^1.17.1"
+  },
+  "devDependencies": {
+  }
+}
